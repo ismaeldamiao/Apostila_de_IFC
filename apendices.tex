@@ -1,0 +1,134 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Linux
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Instalando C, Fortran, Java e/ou Python no Linux}
+
+\lettrine{P}{ara} instalar os compiladores de C, Fortran e Java, bem como a JVM
+e o intérprete de Python
+no Debian e derivados, como Ubuntu, Linux Mint, etc basta digitar
+o comando abaixo no terminal.
+\begin{lstlisting}[style=bash]
+apt update && apt install -y gcc gfortran openjdk-17-jdk python3
+\end{lstlisting}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Android
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Instalando C, Fortran, Java e/ou Python no Android}
+
+\lettrine{A}{} primeira coisa que vamos precisar para programar pelo
+telefone é de um terminal e o melhor que há é o Termux
+que pode ser baixado em
+\url{https://f-droid.org/packages/com.termux/}. Após baixar e instalar o Termux
+abra ele e digite as seguintes linhas de comando (tecle enter depois de cada uma).
+\begin{lstlisting}[style=bash]
+apt update
+apt install -y wget gnupg
+wget -O - cctools.info/public.key | apt-key add -
+echo "deb https://cctools.info termux cctools" >\
+$PREFIX/etc/apt/sources.list.d/cctools.list
+\end{lstlisting}
+
+Finalmente, para
+instalar os compiladores de C, Fortran e Java, bem como a JVM
+e o intérprete de Python
+no Android basta digitar
+o comando abaixo.
+\begin{lstlisting}[style=bash]
+apt update && apt install -y gcc-cctools openjdk-17 python
+\end{lstlisting}
+
+Para facilitar o uso do \texttt{gfortran} digite o
+seguinte comando no terminal.
+\begin{lstlisting}[style=bash]
+ln -s ~/../cctools-toolchain/bin/gfortran $PREFIX/bin/gfortran
+\end{lstlisting}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Windows
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Instalando C, Fortran, Java e/ou Python no Windows}
+
+\lettrine{B}{aixe} o instalador do OpenJDK (implementação gratis e de código aberto do java)
+em
+\url{https://docs.microsoft.com/pt-br/java/openjdk/download}
+(procure pelo arquivo de extensão \texttt{msi})
+e execute ele, certifique-se de marcar a opção \textit{Add to PATH} na
+janela \textit{Custom Setup}.
+
+Baixe o instalador do Python em
+\url{https://www.python.org/downloads/release/python-3100/}
+e execute ele, lembre-se de marcar a opção \textit{Add Python 3.10 to PATH}
+antes de começar a instalação.
+Na última janela pode aparecer a opção \textit{Disable path length limit},
+execute-a.
+
+Baixe o MinGW (Pacote que possui o GCC, que possui compiladores de C e Fortran)
+em
+\url{https://sourceforge.net/projects/mingw/}
+e execute ele,
+quando aparecer a janela \textit{MinGW Instalation Manager}
+clique em \textit{Basic Setup} (à esquerda) e depois selecione, ao lado,
+os pacotes \texttt{mingw32-base} e \texttt{mingw32-gcc-gfortran}
+para serem instalados --- para fazer isso basta clicar no quadradinho e
+depois em \textit{Mark for Installation} ---.
+Depois vá à aba \textit{Installation} (em cima) e clique em \textit{Apply Changes}.
+Uma vez concluida a instalação é preciso adicionar o MinGW ao PATH,
+para isso pesquise no menu iniciar por
+\texttt{exibir configurações avançadas do sistema} e clique na opção
+\texttt{Variáveis de Ambiente}, procure pela variável \texttt{Path}
+e clique em \texttt{editar} e depois em \texttt{Novo}
+e escreva \aspas{\texttt{C:{\textbackslash}MinGW{\textbackslash}bin}}.
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Editores de texto e IDE's
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Editores de texto e IDE's}
+
+Para escrever códigos precisamos de editores de texto, em geral
+queremos editores que deixam as palavras coloridas conforme sua utilidade.
+
+Linux:
+\begin{itemize}[nosep]
+\item Xed \url{https://github.com/linuxmint/xed}
+\item Gedit \url{https://wiki.gnome.org/Apps/Gedit}
+\end{itemize}
+
+Android:
+\begin{itemize}[nosep]
+\item DroidEdit \url{https://play.google.com/store/apps/details?id=com.aor.droidedit}
+\end{itemize}
+
+Windows:
+\begin{itemize}[nosep]
+\item Gedit \url{https://wiki.gnome.org/Apps/Gedit}
+\end{itemize}
+
+Uma IDE nada mais é que um editor de texto que possui várias outras funções
+para facilitar a escrita de códigos, em geral uma IDE é dedicada a uma
+linguagem específica.
+
+Linux:
+\begin{itemize}[nosep]
+\item Eclipse \url{https://www.eclipse.org/downloads/}
+\item Visual Studio Code \url{https://code.visualstudio.com/download}
+\item Code::Blocks (C, C++, Fortran) \url{https://www.codeblocks.org/downloads/binaries/}
+\item Apache NetBeans \url{https://netbeans.apache.org/download/index.html}
+\item Anjuta \url{https://anjuta.org/}
+\end{itemize}
+
+Android:
+\begin{itemize}[nosep]
+\item AIDE (C, Java) \url{https://play.google.com/store/apps/details?id=com.aide.ui}
+\end{itemize}
+
+Windows:
+\begin{itemize}[nosep]
+\item Eclipse \url{https://www.eclipse.org/downloads/}
+\item Visual Studio Code \url{https://code.visualstudio.com/download}
+\item Code::Blocks (C, C++, Fortran) \url{https://www.codeblocks.org/downloads/binaries/}
+\item Apache NetBeans \url{https://netbeans.apache.org/download/index.html}
+\end{itemize}
+

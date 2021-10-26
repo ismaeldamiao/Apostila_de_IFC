@@ -1,0 +1,97 @@
+%  Encoding: UTF-8
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%  Copyright (c) 2021 I.F.F. dos SANTOS
+%
+%  Permission is hereby granted, free of charge, to any person obtaining a copy 
+%  of this software and associated documentation files (the “Software”), to 
+%  deal in the Software without restriction, including without limitation the 
+%  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+%  sell copies of the Software, and to permit persons to whom the Software is 
+%  furnished to do so, subject to the following conditions:
+%
+%  The above copyright notice and this permission notice shall be included in 
+%  all copies or substantial portions of the Software.
+%
+%  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+%  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+%  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+%  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+%  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+%  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+%  IN THE SOFTWARE.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+\documentclass[
+   % -- opções da classe memoir --
+   12pt,                         % tamanho da fonte.
+   openright,                    % capítulos começam em pág ímpar (insere página vazia caso preciso).
+   oneside,                      % para impressão em recto. Oposto a toweside.
+   a4paper,                      % tamanho do papel. 
+   sumario = tradicional,        % Para indentar os sumários
+]{abntex2}
+
+\input{./packages.tex}
+
+\makeatletter
+\titulo{ % Não aceita ascento
+   Introdu\c{c}\~ao \`a F\'isica Computacional
+}
+\autor{I. F. F. dos SANTOS}
+\local{Maceió} % Aceita ascento
+\data{\today}
+\makeatother
+
+\hypersetup{
+   %pagebackref=true,
+   pdftitle={Introdu\c{c}\~ao \`a F\'isica Computacional}, 
+   pdfauthor={\imprimirautor},
+   pdfcreator={LaTeX with abnTeX2},
+   pdfkeywords={Física},
+   %pagebackref=true,
+   bookmarksdepth=4,
+   % Caso o documento seja impresso, marque a opção abaixo como false,
+   % caso contrário, recomendo que matenha como true.
+   colorlinks=true,            % false: boxed links; true: colored links
+   linkcolor=blue,             % color of internal links
+   citecolor=blue,             % color of links to bibliography
+   filecolor=mageta,           % color of file links
+   urlcolor=blue
+}
+
+\begin{document}
+\nobibliography{reference}
+% ------------------------------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ------------------------------------------------------------------------------
+   \input{./capa.tex}
+   \input{./ficha_tecnica.tex}
+% ---
+% SUMÁRIOS
+% ---
+   \pdfbookmark[0]{\contentsname}{toc}
+   \tableofcontents*
+   \pagebreak
+% ------------------------------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ------------------------------------------------------------------------------
+   \textual
+   \input{./document.tex}
+
+% ------------------------------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ------------------------------------------------------------------------------
+   \postextual
+
+   % ---------------------------------------------------------------------------
+   % Referências bibliográficas
+   % ---------------------------------------------------------------------------
+   \bibliography{../reference.bib}
+   \appendix
+   \input{./apendices.tex}
+
+   \chapter{Licença}
+   \begin{otherlanguage*}{english}
+   \input{./LICENSE}
+   \end{otherlanguage*}
+
+\end{document}

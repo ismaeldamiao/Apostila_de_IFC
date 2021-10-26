@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Execute este script para compilar o pdf da apostila
+
+# ###
+# Funcao que compila o arquivo .tex
+# ###
+
+function tex(){
+   arg_pdflatex="-shell-escape "
+   arg_pdflatex+="--interaction=nonstopmode "
+   arg_pdflatex+="-file-line-error "
+   arg_pdflatex+="-output-format=pdf "
+
+   pdflatex ${arg_pdflatex} "${1}.tex" 
+   pdflatex ${arg_pdflatex} "${1}.tex"
+
+   bibtex -terse "${1}"
+   pdflatex ${arg_pdflatex} "${1}.tex"
+   bibtex -terse "${1}"
+
+   pdflatex ${arg_pdflatex} "${1}.tex"
+   bibtex -terse "${1}"
+
+   pdflatex ${arg_pdflatex} "${1}.tex"
+   pdflatex ${arg_pdflatex} "${1}.tex"
+   pdflatex ${arg_pdflatex} "${1}.tex"
+}
+
+cd $(dirname $0)
+tex main #1> /dev/null 2>&1
+mv main.pdf Apostila_de_IFC.pdf
+
+rm \
+"main.dvi" \
+"main.gz" \
+"main.dvi" \
+"main.bak" \
+"main.bbl" \
+"main.blg" \
+"main.aux" \
+"main.toc" \
+"main.lof" \
+"main.lot" \
+"main.idx" \
+"main.log" > /dev/null 2>&1
+
+exit 0

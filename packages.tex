@@ -1,0 +1,327 @@
+%  Encoding: UTF-8
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%  Copyright (c) 2021 I.F.F. dos SANTOS
+%
+%  Permission is hereby granted, free of charge, to any person obtaining a copy 
+%  of this software and associated documentation files (the “Software”), to 
+%  deal in the Software without restriction, including without limitation the 
+%  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+%  sell copies of the Software, and to permit persons to whom the Software is 
+%  furnished to do so, subject to the following conditions:
+%
+%  The above copyright notice and this permission notice shall be included in 
+%  all copies or substantial portions of the Software.
+%
+%  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+%  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+%  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+%  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+%  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+%  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+%  IN THE SOFTWARE.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+
+% --------------------------------------
+% Aparência
+% --------------------------------------
+
+\usepackage[T1]{fontenc}               % Compilar correctamente com pdflatex
+\usepackage[utf8x]{inputenc}           % Codificacao do documento (conversão automática dos acentos).
+\usepackage{ucs}                       % Complemento do anterior.
+\usepackage{indentfirst}               % Indenta o primeiro parágrafo
+
+\PassOptionsToPackage{
+   english,             % idioma adicional para hifenização.
+   french,              % idioma adicional para hifenização.
+   spanish,             % idioma adicional para hifenização.
+   main=portuguese      % Idioma do documento
+}{babel}
+
+% 1ex - É a largura da letra x (minúscula)
+% 1em - É a largura da letra M (Maiúscula)
+\setlength{\parindent}{3ex}  % Tamanho 
+\setlength{\parskip}{1em}    % Tamaño del parágrafo
+
+% Margens da página
+\usepackage{geometry}                          % Permite configurar as margens da página.
+\geometry{hmargin={3cm,2cm},vmargin={3cm,2cm}} % Margens conforme padrão ABNT
+
+% Pacote de citações
+\usepackage[num,overcite]{abntex2cite} % Citações padrão ABNT, em ordem alfabética.
+\citebrackets[]                        % Citações com coxetes.
+\usepackage{bibentry}                  %
+
+% Usar font 'TeX Gyre Termes'
+\usepackage{tgtermes}
+
+\usepackage{titlesec,titletoc}
+
+\titleformat{\chapter}[hang]{\large\bfseries}{\thechapter. }{0pt}{\large\bfseries}
+\titleformat{\section}[hang]{\normalfont\bfseries}{\thesection. }{0pt}{\normalfont\bfseries}
+
+% --------------------------------------
+% ETC
+% --------------------------------------
+
+\usepackage{graphicx}                  % Inclusão de figuras.
+\usepackage{wrapfig}                   % Figuras junto com o texto
+\usepackage{float}                     % Para posicionar figuras corretamente.
+\usepackage{subcaption}                % Para legendas nas subfiguras.
+
+\usepackage{amssymb}                   % Para exibir símbolos de conjuntos de números (reais, etc...).
+\usepackage{amsmath}                   % Para adcionar equações
+\usepackage{amsfonts}                  % Fontes para notação matemática. de cada seção.
+\usepackage{esint}                     % various fancy integral symbols
+
+
+\usepackage{microtype}                 % para melhorias de justificação.
+\usepackage{fancyhdr}                  % Pemite alterações no cabeçalho e rodapé.
+\usepackage{hyperref}                  % Cria formatação automática de PDF.
+\usepackage[hyphenbreaks]{breakurl}    % Quebra de linha em url.
+\usepackage{lettrine}				      % letras capitulares
+
+\usepackage[htt]{hyphenat}  % Permitir hifenização usando \texttt
+
+\usepackage{enumitem}
+
+% --------------------------------------
+% Para notación formal de proposiciónes
+% --------------------------------------
+\usepackage{amsthm, thmtools}
+
+\declaretheoremstyle[
+   headfont=\normalfont\bfseries,
+   bodyfont=\normalfont\itshape,
+   notefont=\normalfont\bfseries,
+   notebraces={ (}{)},
+   headpunct={. },
+   numbered=yes,
+   spaceabove=1em,
+   postheadspace=0em,
+   spacebelow=1em,
+   qed={ }
+]{EstiloItalico}
+\declaretheoremstyle[
+   headfont=\normalfont\bfseries,
+   bodyfont=\normalfont\mdseries,
+   notefont=\normalfont\bfseries,
+   notebraces={ (}{)},
+   headpunct={. },
+   numbered=yes,
+   spaceabove=1em,
+   postheadspace=0em,
+   spacebelow=1em,
+   qed={ }
+]{EstiloPlano}
+
+% Lei
+\declaretheorem[
+   style=EstiloItalico,
+   parent=chapter,
+   name=Lei
+]{lei}
+
+% Axiomas
+\declaretheorem[
+   style=EstiloItalico,
+   parent=chapter,
+   name=Axioma
+]{axioma}
+
+% Postulados
+\declaretheorem[
+   style=EstiloItalico,
+   parent=chapter,
+   name=Postulado
+]{postulado}
+
+% Definição
+\declaretheorem[
+   style=EstiloPlano,
+   parent=chapter,
+   name=Defini\c{c}\~ao
+]{definicao}
+
+% Teorema
+\declaretheorem[
+   style=EstiloItalico,
+   parent=chapter,
+   name=Teorema
+]{teorema}
+
+% Prova
+\declaretheorem[
+   style=EstiloPlano,
+   numbered=no,
+   qed={C.Q.D.},
+   name=Desmostra\c{c}\~ao
+]{prova}
+
+% Exemplo
+\declaretheorem[
+   style=EstiloPlano,
+   parent=chapter,
+   name=Exemplo
+]{exemplo}
+
+% Pergunta
+\declaretheorem[
+   style=EstiloItalico,
+   name=Pergunta
+]{pergunta}
+
+% --------------------------------------
+% Para exibição de código fonte
+% --------------------------------------
+
+% see https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+% see https://latexcolor.com/
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\hspace*{-0.4pt}\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+\renewcommand{\lstlistingname}{Código}
+
+\lstset{
+   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+   basicstyle=\mdseries\ttfamily\scriptsize, % the size of the fonts that are used for the code
+   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+   breaklines=true,                 % sets automatic line breaking
+   captionpos=t,                    % sets the caption-position to bottom
+   columns=fixed,                   % Using fixed column width (for e.g. nice alignment)
+   escapechar=µ,
+   numbers=none,                    % Not use numbers
+   frame=single,	                  % adds a frame around the code
+   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+   rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+   showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+   showstringspaces=false,          % underline spaces within strings only
+   showtabs=false,                  % show tabs within strings adding particular underscores
+   tabsize=3  	                     % sets default tabsize to 3 spaces
+}
+
+\lstdefinestyle{c}{
+   language=C, % the language of the code (can be overrided per snippet)
+   commentstyle=\color{codegray}, % comment style
+   keywordstyle={\color{codegreen}\bfseries},
+   stringstyle=\color{amaranth} % string literal style
+}
+
+\lstdefinestyle{f90}{
+   language=Fortran, % the language of the code (can be overrided per snippet)
+   commentstyle=\color{codegray}, % comment style
+   keywordstyle={\color{codegreen}\bfseries},
+   stringstyle=\color{amaranth} % string literal style
+}
+
+\lstdefinestyle{java}{
+   language=Java, % the language of the code (can be overrided per snippet)
+   commentstyle=\color{codegray}, % comment style
+   keywordstyle={\color{codegreen}\bfseries},
+   stringstyle=\color{amaranth} % string literal style
+}
+
+\lstdefinestyle{py}{
+   language=Python, % the language of the code (can be overrided per snippet)
+   commentstyle=\color{codegray}, % comment style
+   keywordstyle={\color{codegreen}\bfseries},
+   stringstyle=\color{amaranth} % string literal style
+}
+
+\lstdefinestyle{gnuplot}{
+   language=Gnuplot, % the language of the code (can be overrided per snippet)
+   commentstyle=\color{codegray}, % comment style
+   keywordstyle={\color{codegreen}\bfseries},
+   stringstyle=\color{amaranth} % string literal style
+}
+
+\lstdefinestyle{bash}{
+   language=bash, % the language of the code (can be overrided per snippet)
+   commentstyle=\color{codegray}, % comment style
+   keywordstyle={\color{codegreen}\bfseries},
+   stringstyle=\color{amaranth}, % string literal style
+   morekeywords={apt, pacman, yum, zypper, dnf, dns, mkdir, cp, configure, make, tar},
+}
+
+\lstdefinestyle{pseudo}{
+   commentstyle=\color{codegray}, % comment style
+   keywordstyle={\color{codegreen}},
+   stringstyle=\color{amaranth}, % string literal style
+   morekeywords={inicio, fim, para, ate, subrotinas, se, senao, entao, funcao, inteiro, enquanto, gnuplot, logico, verdadeiro, subrotina, variavel},
+   morestring=[b]",
+   morecomment={[l]//},
+   inputencoding=utf8,
+   extendedchars=true,
+   literate=%
+      {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+      {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+      {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+      {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+      {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+      {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+      {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+      {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+      {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+      {Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+      {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+      {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+      {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+      {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+      {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1
+      {←}{{$\leftarrow$}}1
+      {!=}{{$\neq$}}1
+}
+
+% --------------------------------------
+% Para fluxogramas
+% --------------------------------------
+
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{conector} = [circle, minimum width=0.5cm, minimum height=0.5cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{line} = [draw, -latex']
+
+% --------------------------------------
+% CONFIGURAÇÕES DE PACOTES
+% --------------------------------------
+\newcommand{\cqd}{C.Q.D.}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\M}{\mathbb{M}}
+
+\newcommand{\F}{\mathcal{F}}
+
+\newcommand{\sen}{\operatorname{sen}}
+\newcommand{\asen}{\,\operatorname{arcsen}\,}
+
+\newcommand{\bra}[1]{\langle#1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle#1|#2\rangle}
+\newcommand{\ketbra}[2]{|#1\rangle\langle#2|}
+
+\newcommand{\eq}[1]{\hyperref[eq:#1]{equa\c{c}\~ao} \ref{eq:#1}}
+
+\newcommand{\aspas}[1]{``#1''}
+
+\newcommand{\gnuplot}{\ttfamily gnuplot \rmfamily }
